@@ -59,32 +59,11 @@ if prompt:
     bot_response = random.choice(responses[response_tag]) if response_tag in responses else "Maaf, saya tidak mengerti apa yang anda maksud, silahkan tulis kembali"
     
     # Menampilkan chat
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-
-for msg in st.session_state.messages:
-    if msg["role"] == "user":
-        message(msg["content"], is_user=True, key=str(msg))  # Pesan user di kanan
-    else:
-        message(msg["content"], is_user=False, key=str(msg)) # Pesan bot di kiri
-
-if prompt:
-    # ... (kode untuk mendapatkan respons bot) ...
-    bot_response = "..."
-
+    with st.chat_message("user"):
+        st.write(prompt)
+    with st.chat_message("assistant"):
+        st.write(bot_response)
+    
+    # Menyimpan histori chat
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.session_state.messages.append({"role": "assistant", "content": bot_response})
-
-st.markdown(
-    """
-    <style>
-    .stChatMessage .stMarkdown {
-        text-align: right; /* Pesan user di kanan */
-    }
-    .stChatMessage:nth-child(odd) .stMarkdown {
-        text-align: left; /* Pesan bot di kiri */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
