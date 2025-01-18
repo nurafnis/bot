@@ -22,7 +22,7 @@ label_encoder = pickle.load(open(label_encoder_path, 'rb'))  # Memuat label enco
 responses = pickle.load(open(responses_path, 'rb'))  # Memuat respons bot
 
 # Aplikasi Streamlit
-st.markdown("<h1 style='text-align: center; color: black;'>SAHABAT JIWA</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: black;'>MENTAL HEALTH CHATBOT</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; color: black;'>Chatbot Layanan Informasi Kesehatan Mental</p>", unsafe_allow_html=True)
 
 # Kode aplikasi Streamlit lainnya...
